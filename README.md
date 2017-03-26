@@ -4,6 +4,8 @@
 	* [RequireJS](https://bergwhite.github.io/quick-start/Manage/RequireJS/)
 * Library
 	* [ChartJS](https://bergwhite.github.io/quick-start/Library/ChartJS/)
+* PureCSS
+	* [transform2D](https://bergwhite.github.io/quick-start/PureCSS/transform2D)
 
 > 兼容清单
 
@@ -11,6 +13,7 @@
 	* [RequireJS](https://bergwhite.github.io/quick-start/Manage/RequireJS/)
 * IE9+
 	* [ChartJS](https://bergwhite.github.io/quick-start/Library/ChartJS/)
+	* [transform2D](https://bergwhite.github.io/quick-start/PureCSS/transform2D) (-ms-)
 
 > 参考链接
 
@@ -22,3 +25,7 @@ RequireJS
 ChartJS
 
 * [ChartJS官网](http://www.chartjs.org/)
+
+PureCSS
+
+* [transform2D](http://caniuse.com/#search=transform)
