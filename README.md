@@ -1,12 +1,12 @@
 > 项目清单
 
 * Manage
-	* [RequireJS]()
+	* [RequireJS](https://bergwhite.github.io/quick-start/Manage/RequireJS/)
 
 > 兼容清单
 
 * IE6+
-	* [RequireJS]()
+	* [RequireJS](https://bergwhite.github.io/quick-start/Manage/RequireJS/)
 
 > 参考链接
 
