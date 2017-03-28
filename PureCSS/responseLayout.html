@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>响应式媒体查询实践</title>
+    <style>
+
+      /* 样式重置 */
+
+      body {
+        background-color: rgba(128,128,128,0.43);
+        font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+        margin: 0;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      ul {
+          margin: 0;
+          padding-left: 0;
+      }
+      li {
+          list-style-type: none;
+      }
+
+      /* 导航栏 */
+
+      .nav {
+          margin-bottom: 10px;
+          background-color: #ff5722;
+      }
+      .nav a:hover>li {
+          background-color: #2196f3;  /* 悬浮时改变背景颜色 */
+      }
+      .nav ul {
+          overflow: hidden;  /* 清除浮动 */
+      }
+      .nav li {
+          display: inline-block;
+          float: left;
+          padding: 0 5px 0 5px;
+          height: 30px;
+          line-height: 30px;  /* 让文字垂直对齐 */
+      }
+      .nav .info {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      /* 状态提示 */
+
+      .current li {
+        padding-left: 10px;
+        border-left: 5px solid;
+        border-color: gray;
+      }
+
+      /* 文章 */
+
+      .article {
+        margin: 20px 20px 0 20px;
+      }
+      .article-info {
+        color: black;
+        border: 1px solid red;
+        border-top: 0;
+      }
+      .article-img {
+        width: 100%;
+        height: 150px;
+        display: block;  /* 解决下方有空隙的问题 */
+        background-color: white;
+        color: black;  /* 图片未加载时，提示文字的颜色 */
+        text-align: center;  /* 提示文字居中对齐 */
+        line-height: 150px;  /* 提示文字垂直对齐 */
+      }
+      .article-title,.article-content {
+        margin: 0;
+        padding: 10px;
+      }
+      .article-title {
+        font-size: 24px;
+        padding: 10px;
+      }
+      .article-content {
+        font-size: 16px;
+        padding: 10px;
+      }
+
+      /* 标签 */
+
+      .slide {
+        display: none;
+        overflow: hidden;
+        margin-top: 20px;
+        margin-right: 20px;
+        border: 1px solid white;
+        padding: 10px;
+        word-break: break-all;
+      }
+
+      /* 底栏 */
+
+      .footer {
+        overflow: hidden;
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* 清除浮动 */
+
+      .clear {
+        clear: both;
+      }
+
+      /* 手机布局 */
+
+      @media only screen and (max-width:767px) {
+        .current-moblie {
+          color: #ff5722;
+          border-left-color: red!important;  /* 解决权值不够高的问题 */
+        }
+        .nav {
+            height: 30px;
+            overflow: hidden;
+            transition: all .7s;
+        }
+        .nav:hover {
+          height: 150px;
+          overflow: hidden;
+        }
+        .nav li {
+            display: block;
+            float: none;
+            text-align: center;
+        }
+        .nav .info {
+          position: static;
+        }
+      }
+
+      /* 平板布局 */
+
+      @media only screen and (min-width:768px) and (max-width:991px) {
+        .current-pad {
+          color: red;
+          border-left-color: red!important;
+        }
+        .articles {
+          overflow: hidden;
+        }
+        .article {
+          width: 45%;
+          float: left;
+          margin-left: 2.5%;
+          margin-right: 2.5%;
+        }
+      }
+
+      /* 桌面布局 */
+
+      @media only screen and (min-width:992px) and (max-width:1200px) {
+        .current-desktop {
+          color: red;
+          border-left-color: red!important;
+        }
+        .articles {
+          width: 100%;
+          margin-left: 0;
+          margin-right: 0;
+        }
+        .article {
+          width: 100%;
+          height: 150px;
+          max-width: 992px;
+        }
+        .article-info {
+          height: 148px;
+          border: 1px solid red;
+          border-left: 0;
+          overflow: hidden;
+        }
+        .article-img {
+          width: 200px;
+          height: 150px;
+          float: left;
+        }
+      }
+
+      /* 大屏布局 */
+
+      @media only screen and (min-width:1201px) {
+        .current-desktop-large {
+          color: red;
+          border-left-color: red!important;
+        }
+        .articles {
+          width: 70%;
+          margin-left: 0;
+          margin-right: 30px;
+          float: left;
+        }
+        .article {
+          width: 100%;
+          height: 150px;
+          max-width: 1201px;
+        }
+        .article-info {
+          height: 148px;
+          border: 1px solid white;
+          border-left: 0;
+          overflow: hidden;  /* 触发BFC */
+        }
+        .article-img {
+          width: 200px;
+          height: 150px;
+          float: left;
+        }
+        .slide {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 顶栏 -->
+    <div class="header">
+      <!-- 导航 -->
+      <div class="nav">
+        <ul>
+          <a href="#"><li>首页</li></a>
+          <a href="#" class="info"><li>登陆</li></a>
+          <a href="#"><li>动态</li></a>
+          <a href="#"><li>相册</li></a>
+          <a href="#"><li>文章</li></a>
+        </ul>
+      </div>
+      <!-- 状态 -->
+      <div class="current">
+        <ul>
+          <li class="current-moblie">手机布局</li>
+          <li class="current-pad">平板布局</li>
+          <li class="current-desktop">桌面布局</li>
+          <li class="current-desktop-large">大屏布局</li>
+        </ul>
+      </div>
+    </div>
+    <!-- 文章列表 -->
+    <div class="articles">
+      <!-- 文章 -->
+      <div class="article">
+        <img data-src="img/responseLayout-background-1.jpg" class="article-img" alt="加载中...">
+        <div class="article-info">
+          <p class="article-title">第一篇文章</p>
+          <p class="article-content">内容</p>
+        </div>
+      </div>
+      <!-- 文章 -->
+      <div class="article">
+        <img data-src="img/responseLayout-background-2.jpg" class="article-img" alt="加载中...">
+        <div class="article-info">
+          <p class="article-title">第二篇文章</p>
+          <p class="article-content">内容</p>
+        </div>
+      </div>
+      <!-- 文章 -->
+      <div class="article">
+        <img data-src="img/responseLayout-background-3.jpg" class="article-img" alt="加载中...">
+        <div class="article-info">
+          <p class="article-title">第三篇文章</p>
+          <p class="article-content">内容</p>
+        </div>
+      </div>
+      <!-- 文章 -->
+      <div class="article">
+        <img data-src="img/responseLayout-background-4.jpg" class="article-img" alt="加载中...">
+        <div class="article-info">
+          <p class="article-title">第四篇文章</p>
+          <p class="article-content">内容</p>
+        </div>
+      </div>
+      <!-- 文章 -->
+      <div class="article">
+        <img data-src="img/responseLayout-background-5.jpg" class="article-img" alt="加载中...">
+        <div class="article-info">
+          <p class="article-title">第五篇文章</p>
+          <p class="article-content">内容</p>
+        </div>
+      </div>
+      <!-- 文章 -->
+      <div class="article">
+        <img data-src="img/responseLayout-background-6.jpg" class="article-img" alt="加载中...">
+        <div class="article-info">
+          <p class="article-title">第六篇文章</p>
+          <p class="article-content">内容</p>
+        </div>
+      </div>
+    </div>
+    <!-- 侧栏 -->
+    <div class="slide">
+      <!-- 标签 -->
+      <div class="tag">
+        <p>标签</p>
+        <ul>
+          <li>标签一</li>
+          <li>标签二</li>
+        </ul>
+      </div>
+    </div>
+    <!-- 底部 -->
+    <div class="footer clear">
+      ©bergwhite 2017
+    </div>
+    <script type="text/javascript">
+
+      // 懒加载
+
+      (function () {
+
+        // 保存定时器的返回值
+        var timeScroll = null
+        
+        // document.documentElement.scrollTop 用来兼容 firefox
+        var current = document.body.scrollTop || document.documentElement.scrollTop
+        
+        // 把懒加载需要的东西封装在命名空间里
+        var image = {
+          length: document.images.length,  // 图片的长度
+          linkAll: document.images,  // 所有图片的链接
+          linkIdCurrent: 0  // 保存下一次准备加载的图片节点ID
+        }
+
+        // 滚动事件
+        document.onscroll = function() {
+          // 此处使用节流函数来避免多次执行
+          clearTimeout(timeScroll)  // 触发滚动事件时，清除之前的定时器
+          // 然后重新计算定时器，避免多次执行
+          timeScroll =  setTimeout(function(){
+            lazyLoad()  // 满足条件则执行懒加载
+            judge()  // 然后执行判断滚轮方向的函数
+          },100)
+        }
+
+        // 判断滚轮方向的函数
+        function judge() {
+          var sTop = document.body.scrollTop || document.documentElement.scrollTop
+          if( current - sTop > 0 ){
+            console.log('up')
+          }
+          else{
+            console.log('down')
+          }
+          current = document.body.scrollTop || document.documentElement.scrollTop
+        }
+
+        // 懒加载函数
+        function lazyLoad () {
+          // 顶部距离
+          var bodyScrollTop = document.body.scrollTop || document.documentElement.scrollTop
+          // 窗口高度
+          var clientHeight = document.documentElement.clientHeight
+          if ( image.linkIdCurrent < image.length ) {
+            // 当前图片距顶部的距离
+            var currentScrollTop = image.linkAll[image.linkIdCurrent].offsetTop
+            // 当图片距顶部距离小于等于顶部距离加上窗口高度时执行
+            if ( currentScrollTop <= bodyScrollTop + clientHeight ) {
+              // 获取data-src的值，并保存在变量里
+              var imgSrc = image.linkAll[image.linkIdCurrent].getAttribute('data-src')
+              // 把data-src里的值赋给src，促发GET请求，加载图片
+              image.linkAll[image.linkIdCurrent].src = imgSrc
+              // 移除data-src属性
+              image.linkAll[image.linkIdCurrent].removeAttribute('data-src')
+              image.linkIdCurrent++  // 更改成下一次准备加载的图片ID
+              lazyLoad()  // 如果当前满足条件则尝试再次进行懒加载
+            }
+          }
+        }
+        // 执行懒加载函数，下载首屏图片
+        lazyLoad()
+      })()
+    </script>
+  </body>
+</html>

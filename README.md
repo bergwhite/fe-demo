@@ -6,6 +6,7 @@
 	* [ChartJS](https://bergwhite.github.io/quick-start/Library/ChartJS/)
 * PureCSS
 	* [transform2D](https://bergwhite.github.io/quick-start/PureCSS/transform2D)
+	* [responseLayout](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
 
 > 兼容清单
 
@@ -14,6 +15,12 @@
 * IE9+
 	* [ChartJS](https://bergwhite.github.io/quick-start/Library/ChartJS/)
 	* [transform2D](https://bergwhite.github.io/quick-start/PureCSS/transform2D) (-ms-)
+	* [responseLayout](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
+
+> 总结笔记
+
+* [兼容性备忘手册](兼容性备忘手册.md)
+* [问题解决备忘手册](问题解决备忘手册.md)
 
 > 参考链接
 
