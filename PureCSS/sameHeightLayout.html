@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+
+      /* 父元素 */
+
+      .parent {
+        position: relative;  /* 相对布局 */
+        height: 300px;
+      }
+
+      .parent * {
+        color: white;
+        box-shadow: 10px 10px 5px gray;  /* 盒阴影 */
+        padding: 20px;
+        box-sizing: border-box;  /* 以边框为基准的盒模型 */
+        position: absolute;  /* 和父元素的相对布局配合，可以使子元素基于父元素定位 */
+        width: 200px;
+        /* 设置顶部和底部都为0，等高布局形成 */
+        top: 0;
+        bottom: 0;
+        word-break: break-all;  /* 文字过长自动换行 */
+      }
+
+      /* 定义三个布局块的背景颜色和左边距离 */
+
+      .child-a {
+        background-color: red;
+        left: 0;
+      }
+      .child-b {
+        background-color: blue;
+        left: 220px;
+      }
+      .child-c {
+        background-color: green;
+        left: 440px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="child-a">布局一</div>
+      <div class="child-b">布局二</div>
+      <div class="child-c">布局三</div>
+    </div>
+  </body>
+</html>
