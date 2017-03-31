@@ -8,6 +8,7 @@
 	* [transform2D](https://bergwhite.github.io/quick-start/PureCSS/transform2D)
 	* [responseLayout](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
 	* [sameHeightLayout](https://bergwhite.github.io/quick-start/PureCSS/sameHeightLayout)
+	* [getInputValue](https://bergwhite.github.io/quick-start/PureCSS/getInputValue)
 
 > 兼容清单
 
@@ -18,6 +19,7 @@
 	* [transform2D](https://bergwhite.github.io/quick-start/PureCSS/transform2D) (-ms-)
 	* [responseLayout](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
 	* [sameHeightLayout](https://bergwhite.github.io/quick-start/PureCSS/sameHeightLayout)
+	* [getInputValue](https://bergwhite.github.io/quick-start/PureCSS/getInputValue)
 
 > 总结笔记
 

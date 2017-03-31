@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>表单取值示例</title>
+</head>
+<body>
+  <!-- 单选 -->
+  <div>
+    <p>性别</p>
+    <input type="radio" name="sex" class="sex" value="male">
+    <label for="sex">男</label>
+    <input type="radio" name="sex" class="sex" value="female">
+    <label for="sex">女</label>
+  </div>
+  <!-- 多选 -->
+  <div>
+    <p>爱好</p>
+    <input type="checkbox" name="favo" class="favo-list" value="sleep">
+    <label for="sleep">睡觉</label>
+    <input type="checkbox" name="favo" class="favo-list" value="eat">
+    <label for="eat">吃</label>
+    <input type="checkbox" name="favo" class="favo-list" value="play">
+    <label for="play">玩</label>
+  </div>
+  <!-- 选择 -->
+  <div>
+    <p>城市</p>
+    <select class="city">
+      <option value="">城市</option>
+      <option value="nanchang">南昌</option>
+      <option value="beijing">北京</option>
+      <option value="shanghai">上海</option>
+    </select>
+  </div>
+  <p>
+    <a href="javascript:cal()">保存</a>
+  </p>
+  <script type="text/javascript">
+    // 取值函数
+    function cal () {
+      var sex = document.getElementsByClassName('sex'),  // 获取单选元素
+          favoList = document.getElementsByClassName('favo-list'),  // 获取多选元素
+          city = document.getElementsByClassName('city'),  // 获取选择元素
+          sexVal = [],  // 获取单选值
+          favoListVal = [],  // 获取多选值
+          cityVal = city[0].value  // 获取选择值
+      push(sex,sexVal)
+      push(favoList,favoListVal)
+      // 存储单选元素和多选元素选定元素的值
+      function push (el,val) {
+        // 存储长度
+        var len = el.length
+        // 遍历
+        for (var x = 0; x < len; x++) {
+          // 判断当前元素是否被选中
+          if (el[x].checked) {
+            // 被选中则存储当前元素的值
+            val.push(el[x].value)
+          }
+        }
+      }
+      console.log(sexVal)  // 显示单选值
+      console.log(favoListVal)  // 显示多选值
+      console.log(cityVal)  // 获取选择值
+    }
+    
+  </script>
+</body>
+</html>
