@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>异步请求实例</title>
+</head>
+<body>
+
+  <div class="async-types">
+    <p>请选择发送请求的方式（F12）</p>
+    <!-- Ajax -->
+    <input type="radio" name="async-type" value="ajax" id="async-ajax" class="async-type" checked>
+    <label for="async-ajax">ajax</label>
+    <!-- Promise -->
+    <input type="radio" name="async-type" value="promise" id="async-promise" class="async-type">
+    <label for="async-ajax">promise</label>
+    <!-- Fetch -->
+    <input type="radio" name="async-type" value="fetch" id="async-fetch" class="async-type">
+    <label for="async-ajax">fetch</label>
+  </div>
+
+  <script type="text/javascript">
+  
+    /* =====================
+     *     封装好的方法
+     * ===================== */
+
+    var async = (function () {
+
+      // 传入obj，转成URL再返回
+      function paramEncode (obj) {
+        var str = ''
+        for (var x in obj) {
+          str += x + '=' + obj[x] + '&'
+        }
+        str = str.slice(0, -1)
+        return str
+      }
+
+      // 通过传入method和url发送AJAX请求
+      // 通过callback传入下一次需要执行的AJAX
+
+      function useAjax (method,url,data,callback) {
+        var xmlhttp = new XMLHttpRequest()  // 创建异步请求
+        // 异步请求状态发生改变时会执行这个函数
+        xmlhttp.onreadystatechange = function () {
+          // readyState == 4 用来判断当前请求已经准备就绪
+          // status == 200 用来判断当前HTTP请求完成
+          if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
+            var json = JSON.parse(xmlhttp.responseText)
+            callback(json)  // 把AJAX返回的值作为参数，执行下一个AJAX
+          }
+        }
+        // GET请求
+        if (method==='GET') {
+          data = '?' + data + '&t=' + Math.random()  // 开头拼接一个问号
+          xmlhttp.open(method,url+data,true)  // 使用GET方法获取
+          xmlhttp.send()  // 发送异步请求
+        }
+        // POST请求
+        else if(method==='POST') {
+          xmlhttp.open(method,url,true)  // 使用GET方法获取
+          // 设置请求头
+          xmlhttp.setRequestHeader('Content-type', 'application/json')
+          xmlhttp.send(data)  // 发送异步请求
+        }
+      }
+
+      function usePromise ( method,url,data ) {
+        // 返回一个Promise对象
+        return new Promise(function (resolve,reject) {
+          var xmlhttp = new XMLHttpRequest()  // 创建异步请求
+          // 异步请求状态发生改变时会执行这个函数
+          xmlhttp.onreadystatechange = function () {
+            // status == 200 用来判断当前HTTP请求完成
+            if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
+              // 显示返回的内容
+              var json = JSON.parse(xmlhttp.responseText)
+              resolve(json)  // 标记已完成
+            }
+          }
+          // GET请求
+          if (method==='GET') {
+            data = '?' + data + '&t=' + Math.random()  // 开头拼接一个问号
+            xmlhttp.open(method,url+data,true)  // 使用GET方法获取
+            xmlhttp.send()  // 发送异步请求
+          }
+          // POST请求
+          else if(method==='POST') {
+            xmlhttp.open(method,url,true)  // 使用GET方法获取
+            // 设置请求头
+            xmlhttp.setRequestHeader('Content-type', 'application/json')
+            xmlhttp.send(data)  // 发送异步请求
+          }
+        })
+      }
+
+      // 返回调用的接口
+      return {
+        ajax: useAjax,
+        promise: usePromise,
+        paramEncode: paramEncode
+      }
+    })()
+
+    /* =====================
+     *       主代码
+     * ===================== */
+
+    // 传入的参数
+
+    var paramList = {
+      a: {a:'a',d:'d'},
+      b: {b:'b',d:'d'},
+      c: {c:'c',d:'d'},
+      // 转成URL参数
+      toURL: function(type){
+        return async.paramEncode(paramList[type])
+      }
+    }
+
+    // 选项的父级
+    var asyncTypes = document.getElementsByClassName('async-types')[0]
+    // 选项
+    var asyncType = document.getElementsByClassName('async-type')
+    // 监听事件执行相应异步请求
+    asyncTypes.onchange = sendTypeJudge
+
+    sendTypeJudge()  // 首屏渲染
+
+    // 根据选中的Ajax请求，执行相应的异步
+    function sendTypeJudge () {
+      var val,
+          len = asyncType.length
+      for(var x = 0; x < len; x++ ) {
+        // 按钮被选中则把值赋给val
+        if (asyncType[x].checked) {
+          val = asyncType[x].value
+        }
+      }
+      console.log('currentType:'+val)  // 显示当前选中的异步类型
+      sendList(val) // 发送指定的异步
+    }
+
+    /* =====================
+     *        Ajax
+     * ===================== */
+
+    function sendAjax () {
+
+      async.ajax('GET','a.json',paramList.toURL('a'),function (res) {
+        console.log(res)
+        async.ajax('POST','b.json',paramList.toURL('b'),function (res) {
+          console.log(res)
+          async.ajax('GET','c.json',paramList.toURL('c'),function (res) {
+            console.log(res)
+          })
+        })
+      })
+
+    }
+
+    /* =====================
+     *        Promise
+     * ===================== */
+
+    function sendPromise () {
+
+      var aj = async.promise( 'GET', 'a.json',paramList.toURL('a') )
+      aj.then(function (res) {
+        console.log(res)
+      }).catch(function (err) {
+        console.log(err)
+      })
+
+      var bj = async.promise( 'POST', 'b.json',paramList.toURL('b') )
+      bj.then(function (res) {
+        console.log(res)
+      }).catch(function (err) {
+        console.log(err)
+      })
+
+      var cj = async.promise( 'GET', 'c.json',paramList.toURL('c') )
+      cj.then(function (res) {
+        console.log(res)
+      }).catch(function (err) {
+        console.log(err)
+      })
+
+    }
+
+    /* =====================
+     *        Fetch
+     * ===================== */
+
+    function sendFetch () {
+
+      fetch('a.json?'+paramList.toURL('a')).then(function (res){
+        return res
+      }).then(function (res) {
+        return res.json()  // 返回Promise对象
+      }).then(function (json) {
+        console.log(json)// 显示JSON内容
+      })
+
+      fetch('b.json',{method:'post',body:JSON.stringify(paramList.b)}).then(function (res){
+        return res
+      }).then(function (res) {
+        return res.json()
+      }).then(function (json) {
+        console.log(json)
+      })
+
+      fetch('c.json?'+paramList.toURL('c')).then(function (res){
+        return res
+      }).then(function (res) {
+        return res.json()
+      }).then(function (json) {
+        console.log(json)
+      })
+
+    }
+
+    /* ==============================
+     *  传入选中的值，执行相应的异步
+     * ============================== */
+
+    function sendList (type) {
+      switch (type) {
+        case 'ajax': sendAjax()
+          break;
+        case 'promise': sendPromise()
+          break;
+        case 'fetch': sendFetch()
+          break;
+        default: console.log('Type Error.')  // 传入参数错误时进行提示
+          break;
+      }
+    }
+    
+  </script>
+
+</body>
+</html>
