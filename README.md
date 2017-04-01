@@ -10,7 +10,7 @@
 	* [sameHeightLayout](https://bergwhite.github.io/quick-start/PureCSS/sameHeightLayout)
 * PureJS
 	* [getInputValue](https://bergwhite.github.io/quick-start/PureJS/getInputValue)
-	* [eventDelegation](getInputValue](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
+	* [eventDelegation](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
 
 > 兼容清单
 
