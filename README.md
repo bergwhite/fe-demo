@@ -8,7 +8,9 @@
 	* [transform2D](https://bergwhite.github.io/quick-start/PureCSS/transform2D)
 	* [responseLayout](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
 	* [sameHeightLayout](https://bergwhite.github.io/quick-start/PureCSS/sameHeightLayout)
-	* [getInputValue](https://bergwhite.github.io/quick-start/PureCSS/getInputValue)
+* PureJS
+	* [getInputValue](https://bergwhite.github.io/quick-start/PureJS/getInputValue)
+	* [eventDelegation](getInputValue](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
 
 > 兼容清单
 

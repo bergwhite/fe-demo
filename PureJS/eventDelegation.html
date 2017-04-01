@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div class="selectListParent"></div>
+  <p class="selectedValue">null</p>
+
+  <script type="text/javascript">
+    var selectListParent = document.getElementsByClassName('selectListParent')[0]
+    var selectedValue = document.getElementsByClassName('selectedValue')[0]
+    var selectList = `
+      <select>
+        <option value='a'>a</option>
+        <option value='b'>b</option>
+        <option value='c'>c</option>
+      </select>`
+
+    selectListParent.innerHTML = selectList
+    selectListParent.addEventListener('change', function (e) {
+      if (e.target.tagName.toLowerCase() === 'select') {
+        selectedValue.innerHTML = e.target.value
+      }
+    },false)
+  </script>
+</body>
+</html>
