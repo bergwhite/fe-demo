@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>事件委托示例</title>
 </head>
 <body>
+
+  <!--用来存储动态节点的元素-->
   <div class="selectListParent"></div>
+  <!--显示动态节点获取的值-->
   <p class="selectedValue">null</p>
 
   <script type="text/javascript">
+    // 动态生成元素的父节点
     var selectListParent = document.getElementsByClassName('selectListParent')[0]
+    // 用来显示动态生成元素选中的值
     var selectedValue = document.getElementsByClassName('selectedValue')[0]
+    // 动态生成的元素
     var selectList = `
       <select>
         <option value='a'>a</option>
         <option value='b'>b</option>
         <option value='c'>c</option>
       </select>`
-
+    // 把元素赋值在节点上
     selectListParent.innerHTML = selectList
+    // 监听父元素
     selectListParent.addEventListener('change', function (e) {
+      // 如果当前值的目标标签的小写字母是select
       if (e.target.tagName.toLowerCase() === 'select') {
+        // 则显示监听到的值
         selectedValue.innerHTML = e.target.value
       }
     },false)
   </script>
+
 </body>
 </html>
