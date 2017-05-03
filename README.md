@@ -11,6 +11,7 @@
 * PureJS
 	* [getInputValue](https://bergwhite.github.io/quick-start/PureJS/getInputValue)
 	* [eventDelegation](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
+	* [autoDisplay](https://bergwhite.github.io/quick-start/PureJS/autoDisplay)
 	* [async](https://bergwhite.github.io/quick-start/PureJS/async)
 
 > 兼容清单
