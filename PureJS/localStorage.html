@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>本地存储示例</title>
+  <style type="text/css">
+    /*.article {
+      width: 300px;
+    }*/
+  </style>
+</head>
+<body>
+<p>请在控制台中查看（F12）</p>
+<!-- <form class="article">
+  <input type="text" placeholder="标题">
+  <textarea placeholder="内容"></textarea>
+  <input type="text" placeholder="标签">
+  <input type="date">
+</form> -->
+<ul class="header">
+  <li onclick="article.get()">取</li>
+  <li onclick="article.set('a','b','c','d')">存</li>
+  <li onclick="article.del(0)">删</li>
+  <li onclick="article.set('aa','bb','cc','dd',0)">改</li>
+</ul>
+<script type="text/javascript">
+  var Local = function (attr,obj) {
+    this.obj = obj
+    this.attr = attr
+    if (localStorage.getItem(attr)==='') {
+      obj = JSON.stringify(obj)
+      localStorage.setItem(attr,obj)
+    }
+    return function (type,val,setStatus,getStatus) {
+      function parse (val) {
+         return JSON.parse(val)
+      }
+      function stringify (val) {
+         return JSON.stringify(val)
+      }
+      function get () {
+        var getVal = this.parse(localStorage.getItem(attr))
+        if (getVal) {
+          // getStatus
+        }
+        console.log(getVal)
+        return getVal
+      }
+      function set (title,content,tag,data,index) {
+        var template = {
+          title: title,
+          content: content,
+          tag: tag,
+          data: data
+        }
+        var val = this.get()
+        var len = val.length
+        console.log(len)
+        if (index !== undefined) {
+          if (len === 0) {
+            return false
+          }
+          val[index] = template
+        }
+        else {
+          val[len] = template
+        }
+        val = this.stringify(val)
+        localStorage.setItem(attr,val)
+      }
+      function del (index) {
+        var val = this.get()
+        val.splice(index,1)
+        val = this.stringify(val)
+        localStorage.setItem(attr,val)
+      }
+      return {
+        get: get,
+        set: set,
+        del: del,
+        parse: parse,
+        stringify: stringify
+      }
+    }
+  }
+  // var articleObj = [
+  //   {
+  //     title: 'title',
+  //     content: 'content',
+  //     tag: 'tag',
+  //     data: 'data'
+  //   }
+  // ]
+  var article = new Local('article',[])()
+  /*
+  var header = document.getElementsByClassName('header')[0]
+  var obj = {you: 'enough'}
+  var objJSON = JSON.stringify(obj)
+  header.setAttribute('data-obj',objJSON)  // JSON存在data里
+  var dataObj = header.getAttribute('data-obj')  // 获取data里的JSON
+  var dataObjParse = JSON.parse(dataObj)  // 转为对象
+  console.log(dataObj)  // 输出JSON
+  console.log(dataObjParse.you)  // 输出对象的属性you
+  */
+</script>
+</body>
+</html>
