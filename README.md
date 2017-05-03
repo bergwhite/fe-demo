@@ -19,14 +19,14 @@
 	* [响应式布局以及图片懒加载（responseLayout）](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
 	* [等高布局（sameHeightLayout）](https://bergwhite.github.io/quick-start/PureCSS/sameHeightLayout)
 * JS组件（PureJS）
-	* [开关（switch）](https://bergwhite.github.io/quick-start/PureJS/switch)
+	* [开关按钮（switch）](https://bergwhite.github.io/quick-start/PureJS/switch)
 	* [获取表单的值（getInputValue）](https://bergwhite.github.io/quick-start/PureJS/getInputValue)
 	* [三级联动（citySelect）](https://bergwhite.github.io/quick-start/PureJS/citySelect)
 	* [事件代理（eventDelegation）](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
 	* [轮播图（autoDisplay）](https://bergwhite.github.io/quick-start/PureJS/autoDisplay)
 	* [模拟弹窗（simulateAlert）](https://bergwhite.github.io/quick-start/PureJS/simulateAlert)
 	* [本地存储（localStorage）](https://bergwhite.github.io/quick-start/PureJS/localStorage)
-	* [异步（async）](https://bergwhite.github.io/quick-start/PureJS/async)
+	* [三种异步请求（async）](https://bergwhite.github.io/quick-start/PureJS/async)
 
 > 总结笔记
 
