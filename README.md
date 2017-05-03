@@ -1,4 +1,4 @@
-> 项目清单
+> 在线预览
 
 * Manage
 	* [RequireJS](https://bergwhite.github.io/quick-start/Manage/RequireJS/)
