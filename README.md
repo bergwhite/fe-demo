@@ -12,6 +12,7 @@
 	* [getInputValue](https://bergwhite.github.io/quick-start/PureJS/getInputValue)
 	* [eventDelegation](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
 	* [autoDisplay](https://bergwhite.github.io/quick-start/PureJS/autoDisplay)
+	* [switch](https://bergwhite.github.io/quick-start/PureJS/switch)
 	* [async](https://bergwhite.github.io/quick-start/PureJS/async)
 
 > 兼容清单
@@ -26,6 +27,8 @@
 	* [getInputValue](https://bergwhite.github.io/quick-start/PureCSS/getInputValue)
 	* [eventDelegation](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
 	* [async](https://bergwhite.github.io/quick-start/PureJS/async)
+	* [autoDisplay](https://bergwhite.github.io/quick-start/PureJS/autoDisplay)
+	* [switch](https://bergwhite.github.io/quick-start/PureJS/switch)
 
 > 总结笔记
 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>开关示例</title>
+  <style type="text/css">
+    .switch {
+      position: relative;
+      width: 60px;
+      height: 20px;
+      border: 1px solid gray;
+      background-color: white;
+    }
+    .switch-box {
+      transition: all .2s cubic-bezier(0.65, 0.05, 0.36, 1);
+      position: absolute;
+      width: 30px;
+      height: 20px;
+      top: 0;
+      left: 0;
+      background-color: gray;
+    }
+    .switch-box-active {
+      position: absolute;
+      left: 30px;
+      background-color: #03a9f4;
+    }
+  </style>
+</head>
+<body>
+<div class="switch" onclick="change()">
+  <div class="switch-box"></div>
+</div>
+<script type="text/javascript">
+  function change () {
+     var switchBox = document.getElementsByClassName('switch-box')[0]
+     // 如果不存在switch-box-active属性，则添加
+     if(switchBox.className.indexOf('switch-box-active') === -1) {
+      switchBox.className += ' switch-box-active'
+     }
+     // 存在则删除
+     else {
+      switchBox.className = switchBox.className.replace(' switch-box-active','')
+     }
+  }
+</script>
+</body>
+</html>
