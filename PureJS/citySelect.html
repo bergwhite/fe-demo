@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>三级联动</title>
+</head>
+<body>
+<div class="colleges">
+  <select class="province" onchange="renderCity(this.value)">
+    <option value=''>省份</option>
+  </select>
+  <select class="city" onchange="renderBlock()">
+    <option value=''>城市</option>
+  </select>
+  <select class="block" onchange="renderAll()">
+    <option value=''>区</option>
+  </select>
+</div>
+<script type="text/javascript">
+  var select = {
+    province: ['江西','广东'],
+    city: [['南昌','九江'],['广东','深圳']],
+    block: [[['东湖','西湖'],['浔阳','九江县']],[['茂名'],['福田']]]
+  }
+  var dom = {
+    province: document.getElementsByClassName('province')[0],
+    city: document.getElementsByClassName('city')[0],
+    block: document.getElementsByClassName('block')[0]
+  }
+  function createSelect (select,options) {
+    if (select.children.length > 1) {
+      select.children.length = 0
+    }
+    for (var x = 0; x < options.length; x++) {
+      var option = document.createElement('option')
+      option.innerHTML = options[x]
+      option.value = x
+      select.appendChild(option)
+    }
+  }
+  function renderProvince() {
+    createSelect(dom.province,select.province)
+  }
+  function renderCity (node) {
+    createSelect(dom.city,select.city[node])
+  }
+  function renderBlock () {
+    var node1 = dom.province.value
+    var node2 = dom.city.value
+    createSelect(dom.block,select.block[node1][node2])
+  }
+  function renderAll () {
+    var node1 = dom.province.value
+    var node2 = dom.city.value
+    var node3 = dom.block.value
+    console.log([node1,node2,node3])
+    return [node1,node2,node3]
+  }
+  renderProvince()
+</script>
+</body>
+</html>

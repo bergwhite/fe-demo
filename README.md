@@ -12,6 +12,7 @@
 * JS组件（PureJS）
 	* [开关（switch）](https://bergwhite.github.io/quick-start/PureJS/switch)
 	* [获取表单的值（getInputValue）](https://bergwhite.github.io/quick-start/PureJS/getInputValue)
+	* [三级联动（citySelect）](https://bergwhite.github.io/quick-start/PureJS/citySelect)
 	* [事件代理（eventDelegation）](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
 	* [轮播图（autoDisplay）](https://bergwhite.github.io/quick-start/PureJS/autoDisplay)
 	* [本地存储（localStorage）](https://bergwhite.github.io/quick-start/PureJS/localStorage)
