@@ -26,7 +26,7 @@
 	* [轮播图（autoDisplay）](https://bergwhite.github.io/quick-start/PureJS/autoDisplay)
 	* [模拟弹窗（simulateAlert）](https://bergwhite.github.io/quick-start/PureJS/simulateAlert)
 	* [本地存储（localStorage）](https://bergwhite.github.io/quick-start/PureJS/localStorage)
-	* [三种异步请求（async）](https://bergwhite.github.io/quick-start/PureJS/async)
+	* [三种异步请求（AJAX/Promise/Fetch）（async）](https://bergwhite.github.io/quick-start/PureJS/async)
 
 > 总结笔记
 
