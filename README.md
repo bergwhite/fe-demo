@@ -1,6 +1,11 @@
 > 在线演示
 
-演示的交互结果多半是打印在控制台中（F12），请自行查看
+```
+
+* 演示的交互结果多半是打印在控制台中（F12），请自行查看。
+* 演示代码有问题的地方欢迎提交issue或者pull requests。
+
+```
 
 * 管理（Manage）
 	* [用Gulp配置立即预览的前端开发环境（GulpJS）](https://github.com/bergwhite/quick-start/tree/master/Manage/GulpJS)
