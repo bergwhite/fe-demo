@@ -7,7 +7,7 @@
 	* [图表库（ChartJS）](https://bergwhite.github.io/quick-start/Library/ChartJS/)
 * CSS组件（PureCSS）
 	* [transform2D](https://bergwhite.github.io/quick-start/PureCSS/transform2D)
-	* [响应式布局（responseLayout）](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
+	* [响应式布局以及图片懒加载（responseLayout）](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
 	* [等高布局（sameHeightLayout）](https://bergwhite.github.io/quick-start/PureCSS/sameHeightLayout)
 * JS组件（PureJS）
 	* [开关（switch）](https://bergwhite.github.io/quick-start/PureJS/switch)
