@@ -1,34 +1,19 @@
-> 在线预览
+> 在线演示
 
-* Manage
-	* [RequireJS](https://bergwhite.github.io/quick-start/Manage/RequireJS/)
-* Library
-	* [ChartJS](https://bergwhite.github.io/quick-start/Library/ChartJS/)
-* PureCSS
+* 管理（Manage）
+	* [AMD模块化实现（RequireJS）](https://bergwhite.github.io/quick-start/Manage/RequireJS/)
+* 库（Library）
+	* [图表库（ChartJS）](https://bergwhite.github.io/quick-start/Library/ChartJS/)
+* CSS组件（PureCSS）
 	* [transform2D](https://bergwhite.github.io/quick-start/PureCSS/transform2D)
-	* [responseLayout](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
-	* [sameHeightLayout](https://bergwhite.github.io/quick-start/PureCSS/sameHeightLayout)
-* PureJS
-	* [getInputValue](https://bergwhite.github.io/quick-start/PureJS/getInputValue)
-	* [eventDelegation](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
-	* [autoDisplay](https://bergwhite.github.io/quick-start/PureJS/autoDisplay)
-	* [switch](https://bergwhite.github.io/quick-start/PureJS/switch)
-	* [async](https://bergwhite.github.io/quick-start/PureJS/async)
-
-> 兼容清单
-
-* IE6+
-	* [RequireJS](https://bergwhite.github.io/quick-start/Manage/RequireJS/)
-* IE9+
-	* [ChartJS](https://bergwhite.github.io/quick-start/Library/ChartJS/)
-	* [transform2D](https://bergwhite.github.io/quick-start/PureCSS/transform2D) (-ms-)
-	* [responseLayout](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
-	* [sameHeightLayout](https://bergwhite.github.io/quick-start/PureCSS/sameHeightLayout)
-	* [getInputValue](https://bergwhite.github.io/quick-start/PureCSS/getInputValue)
-	* [eventDelegation](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
-	* [async](https://bergwhite.github.io/quick-start/PureJS/async)
-	* [autoDisplay](https://bergwhite.github.io/quick-start/PureJS/autoDisplay)
-	* [switch](https://bergwhite.github.io/quick-start/PureJS/switch)
+	* [响应式布局（responseLayout）](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
+	* [等高布局（sameHeightLayout）](https://bergwhite.github.io/quick-start/PureCSS/sameHeightLayout)
+* JS组件（PureJS）
+	* [获取表单的值（getInputValue）](https://bergwhite.github.io/quick-start/PureJS/getInputValue)
+	* [事件代理（eventDelegation）](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
+	* [轮播图（autoDisplay）](https://bergwhite.github.io/quick-start/PureJS/autoDisplay)
+	* [开关（switch）](https://bergwhite.github.io/quick-start/PureJS/switch)
+	* [异步（async）](https://bergwhite.github.io/quick-start/PureJS/async)
 
 > 总结笔记
 
