@@ -29,9 +29,14 @@
     block: document.getElementsByClassName('block')[0]
   }
   function createSelect (select,options) {
-    if (select.children.length > 1) {
-      select.children.length = 0
-    }
+    // TODO appendChild
+    // for (x in dom) {
+    //   var current = dom[x].children
+    //   var len = current.length
+    //   for (var y = 1; y <= len; y++) {
+    //     dom[x].removeChild(current[y])
+    //   }
+    // }
     for (var x = 0; x < options.length; x++) {
       var option = document.createElement('option')
       option.innerHTML = options[x]

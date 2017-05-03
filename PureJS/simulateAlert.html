@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>模拟弹窗</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+    .mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .mask-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: gray;
+      opacity: .5;
+      width: 1000px;
+      height: 500px;
+      z-index: 998;
+      opacity: 0.5;
+      filter: alpha(opacity=50);
+    }
+    .mask-main {
+      position: relative;
+      left: 500px;
+      top: 250px;
+      margin-left: -200px;
+      margin-top: -100px;
+      width: 400px;
+      height: 200px;
+      background-color: white;
+      z-index: 999;
+    }
+    .mask-title {
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+    }
+    .mask-content {
+      padding: 10px;
+      height: 130px;
+    }
+    .mask-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">普通内容</div>
+  <div class="nav"><a onclick="mask('标题','内容')">提示框</a></div>
+  <script type="text/javascript">
+    /*document.body.onresize = function () {
+      console.log('resize')
+    }*/
+    function removeNode (e) {
+       e.parentNode.removeChild(e)
+    }
+    function mask(title,content) {
+      var mask = document.getElementsByClassName('mask')[0]
+      var width = document.documentElement.clientWidth
+      var height = document.documentElement.clientHeight
+      var maskElement = [
+      '<div class="mask" draggable>',
+        '<div class="mask-bg" style="width:'+width+'px;height:'+height+'px;">',
+        '</div>',
+        '<div class="mask-main">',
+          '<div class="mask-title">',
+            title,
+          '</div>',
+          '<div class="mask-content">',
+            content,
+          '</div>',
+        '<div>',
+        '<div class="mask-close" onclick="mask()">',
+        'X',
+        '</div>',
+      '</div>']
+      if (!mask) {
+        var maskDOM = maskElement.join('')
+        document.body.innerHTML += maskDOM
+      }
+      else {
+        removeNode(mask)
+        console.log('a')
+      }
+    }
+  </script>
+</body>
+</html>

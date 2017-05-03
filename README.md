@@ -15,6 +15,7 @@
 	* [三级联动（citySelect）](https://bergwhite.github.io/quick-start/PureJS/citySelect)
 	* [事件代理（eventDelegation）](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
 	* [轮播图（autoDisplay）](https://bergwhite.github.io/quick-start/PureJS/autoDisplay)
+	* [模拟弹窗（simulateAlert）](https://bergwhite.github.io/quick-start/PureJS/simulateAlert)
 	* [本地存储（localStorage）](https://bergwhite.github.io/quick-start/PureJS/localStorage)
 	* [异步（async）](https://bergwhite.github.io/quick-start/PureJS/async)
 
