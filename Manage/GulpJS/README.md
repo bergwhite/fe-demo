@@ -24,6 +24,8 @@ npm instll
 
 **配置文件**
 
+可以按需修改。
+
 ```
 
 gulpfile.js
@@ -63,6 +65,6 @@ var compileDir = {
 ```
 
 npm run build  // 只编译线上站点
-npm run build  // 开启即使预览的开发模式
+npm run dev  // 开启即使预览的开发模式
 
 ```
