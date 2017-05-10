@@ -26,6 +26,7 @@
 
 > JS组件（PureJS）
 
+* [简单音乐播放器（simpleMusicPlayer）](https://bergwhite.github.io/quick-start/PureJS/simpleMusicPlayer)
 * [开关按钮（switch）](https://bergwhite.github.io/quick-start/PureJS/switch)
 * [获取表单的值（getInputValue）](https://bergwhite.github.io/quick-start/PureJS/getInputValue)
 * [三级联动（citySelect）](https://bergwhite.github.io/quick-start/PureJS/citySelect)

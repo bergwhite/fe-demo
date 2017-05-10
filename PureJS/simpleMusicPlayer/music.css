@@ -1,0 +1,86 @@
+/* 全局样式 */
+
+body {
+  background-color: black;
+}
+ul,li {
+  padding: 0;
+  margin: 0;
+}
+ul {
+  list-style-type: none;
+}
+
+/* 一级布局 */
+
+.music {
+  width: 600px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left:-300px;
+  margin-top: -100px;
+  background-color: #00bcd4;
+}
+.music-title {
+  color: white;
+  text-align: center;
+}
+.music-lists-wrap {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background-color: white;
+}
+.music-play {
+  width: 360px;
+  height: 160px;
+  position: absolute;
+  left: 220px;
+  top: 20px;
+  background-color: white;
+  text-align: center;
+  border-radius: 20px;
+}
+
+/* 二级布局 */
+
+.music-list {
+  text-align: center;
+  border-bottom: 1px solid white;
+}
+
+/* 三级布局 */
+
+.music-infos {
+  height: 110px;
+  line-height: 110px;
+}
+.music-info {
+  width: 320px;
+  height: 40px;
+  margin: 0 20px;
+}
+.music-control {
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  padding: 2px;
+}
+
+/* :hover */
+
+.music-list:hover {
+  background-color: black;
+  color: white;
+}
+
+/* when is playing*/
+
+.music-selected {
+  background-color: black;
+  color: white;
+}
