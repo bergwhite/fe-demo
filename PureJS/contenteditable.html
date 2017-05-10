@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>contenteditable demo</title>
+  <style type="text/css">
+    .show {
+      background-color: gray;
+    }
+  </style>
+</head>
+<body>
+  <p class="contenteditable" contenteditable>修改值之后再保存试试吧（点击我进行修改）</p>
+  <button onclick="save()">保存</button>
+  <p class="show">点击保存之后结果会显示在这里</p>
+  <script type="text/javascript">
+    // 获取可编辑节点
+    var contenteditable = document.getElementsByClassName('contenteditable')[0]
+    // 点击保存时会执行这个函数
+    var save = function() {
+      // 获取显示结果的节点
+      var show = document.getElementsByClassName('show')[0]
+      // 把值显示在新节点上
+      show.innerText = contenteditable.innerText
+    }
+  </script>
+</body>
+</html>

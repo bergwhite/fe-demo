@@ -22,6 +22,7 @@
 	* [开关按钮（switch）](https://bergwhite.github.io/quick-start/PureJS/switch)
 	* [获取表单的值（getInputValue）](https://bergwhite.github.io/quick-start/PureJS/getInputValue)
 	* [三级联动（citySelect）](https://bergwhite.github.io/quick-start/PureJS/citySelect)
+	* [模拟输入框（contenteditable）](https://bergwhite.github.io/quick-start/PureJS/contenteditable)
 	* [事件代理（eventDelegation）](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
 	* [轮播图（autoDisplay）](https://bergwhite.github.io/quick-start/PureJS/autoDisplay)
 	* [模拟弹窗（simulateAlert）](https://bergwhite.github.io/quick-start/PureJS/simulateAlert)
@@ -33,18 +34,3 @@
 * [兼容性备忘手册](兼容性备忘手册.md)
 * [问题解决备忘手册](问题解决备忘手册.md)
 * [技能学习备忘手册](技能学习备忘手册.md)
-
-> 参考链接
-
-RequireJS
-
-* [RequireJS官网](http://requirejs.org/)
-* [RequireJS中文网](http://www.requirejs.cn/)
-
-ChartJS
-
-* [ChartJS官网](http://www.chartjs.org/)
-
-PureCSS
-
-* [transform2D](http://caniuse.com/#search=transform)
