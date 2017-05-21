@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>指定位置插值</title>
+</head>
+<body>
+  <div>
+    <input class="info" type="text" value="Try To Click The Buttom">
+    <button onclick="insertToCurrentFoucs('😎')">insertToCurrentFoucs</button>
+  </div>
+  <script type="text/javascript">
+  var info = document.getElementsByClassName('info')[0]
+  // 第一次的索引默认是0
+  // 我们希望默认在最后追加
+  // 所以需要对第一次插值进行特殊处理
+  var infoIsFirst = true
+  var infoIsFoucs = false
+  info.onclick = function () {
+    infoIsFoucs = true
+  }
+  function insertToCurrentFoucs(type) {
+    var infoVal = info.value  // 表单值
+    var index = info.selectionStart  // 光标位置
+    // 如果当前为第一次并且没有点击过输入框
+    // 则把索引改为最后
+    infoIsFirst && (!infoIsFoucs) ? index = infoVal.length : ''
+    // 执行完第一次则把是否是第一次的状态改为false
+    infoIsFirst = false
+    // 首部插入
+    if (infoVal === '') {
+      info.value = type
+    }
+    // 尾部插入
+    else if (infoVal.length === index) {
+      info.value = info.value + type
+    }
+    // 中间插入
+    else {
+      info.value = infoVal.slice(0,index) + type + infoVal.slice(index,infoVal.length)
+    }
+    console.log('currentFoucsIndex: ' + index)
+    console.log(infoVal.length)
+  }
+  </script>
+</body>
+</html>

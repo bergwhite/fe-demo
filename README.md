@@ -29,6 +29,7 @@
 * [简单音乐播放器（simpleMusicPlayer）](https://bergwhite.github.io/quick-start/PureJS/simpleMusicPlayer)
 * [开关按钮（switch）](https://bergwhite.github.io/quick-start/PureJS/switch)
 * [获取表单的值（getInputValue）](https://bergwhite.github.io/quick-start/PureJS/getInputValue)
+* [指定位置插值（insertToCurrentFoucs）](https://bergwhite.github.io/quick-start/PureJS/insertToCurrentFoucs)
 * [三级联动（citySelect）](https://bergwhite.github.io/quick-start/PureJS/citySelect)
 * [模拟输入框（contenteditable）](https://bergwhite.github.io/quick-start/PureJS/contenteditable)
 * [事件代理（eventDelegation）](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
