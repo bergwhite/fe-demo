@@ -12,6 +12,7 @@
 > 管理（Manage）
 
 * [用Gulp配置立即预览的前端开发环境（GulpJS）](https://github.com/bergwhite/quick-start/tree/master/Manage/GulpJS)
+* [支持热更新的Webpack开发环境（WebpackJS）](https://github.com/bergwhite/quick-start/tree/master/Manage/WebpackJS)
 * [AMD模块化实现（RequireJS）](https://bergwhite.github.io/quick-start/Manage/RequireJS/)
 
 > 库（Library）
