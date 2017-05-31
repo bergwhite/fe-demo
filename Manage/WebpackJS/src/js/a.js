@@ -1,1 +1,1 @@
-module.exports = 'hello(form a)'
+module.exports = 'hello(form as)';

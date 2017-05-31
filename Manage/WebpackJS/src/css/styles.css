@@ -1,0 +1,6 @@
+body {
+  color: black;
+  &:hover {
+    background-color: red;
+  }
+}

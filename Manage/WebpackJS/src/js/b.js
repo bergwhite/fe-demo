@@ -1,1 +1,1 @@
-module.exports = 'world(form b)'
+module.exports = 'world(form b)';
