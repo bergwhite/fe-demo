@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    .flex-wrap {
+      display: -webkit-flex;
+      display: flex;  /* flex / inline-flex */
+      -webkit-flex-direction: row;
+      flex-direction: row;  /* row row-reverse column column-reverse */
+      flex-wrap: wrap;  /* wrap(breakline) / nowrap /  wrap-reverse */
+      /* flex-flow: flex-direction | flex-wrap */
+      justify-content: center;  /* flex-start center flex-end space-between(border:0) space-around */
+      align-items: center;  /* stretch(fill all) flex-start center flex-end baseline */
+      align-content: flex-start;  /* stretch(fill all) flex-start center flex-end baseline */
+      /* order: <number>; */
+      /* flex-grow: <number>; */         /* ] bigger */
+      /* flex-shrink: <number>; */       /* ] smaller */
+      /* flex-basis: auto | <width>; */  /* ]  what the difference*/
+      /* flex: none | auto | [ <flex-grow> <flex-shrink>? || <flex-basis> ]; */
+      /* align-self:         auto | flex-start | flex-end | center | baseline | stretch; */
+      align-self: stretch;
+    }
+    .flex {
+      padding: 50px 250px;
+      color: white;
+      max-width: 300px;
+    }
+    .flex-a {
+      background-color: red;
+      order: 3;
+    }
+    .flex-b {
+      background-color: gray;
+      order: 2;
+    }
+    .flex-c {
+      background-color: yellow;
+      order: 1;
+    }
+    .flex-d {
+      background-color: blue;
+      order: 4;
+    }
+  </style>
+</head>
+<body>
+<div class="flex-wrap">
+  <div class="flex flex-a">
+    1
+  </div>
+  <div class="flex flex-b">
+    2
+  </div>
+  <div class="flex flex-c">
+    3
+  </div>
+  <div class="flex flex-d">
+    4
+  </div>
+</div>
+</body>
+</html>

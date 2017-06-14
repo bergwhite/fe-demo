@@ -24,6 +24,7 @@
 * [transform2D（用动画演示transform是干嘛的）](https://bergwhite.github.io/quick-start/PureCSS/transform2D)
 * [响应式布局以及图片懒加载（responseLayout）](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
 * [等高布局（sameHeightLayout）](https://bergwhite.github.io/quick-start/PureCSS/sameHeightLayout)
+* [flexLayout（弹性布局）](https://bergwhite.github.io/quick-start/PureCSS/flexLayout)
 
 > JS组件（PureJS）
 

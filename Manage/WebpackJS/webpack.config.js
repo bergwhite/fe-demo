@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const autoprefixer = require('autoprefixer');
 // console.log(process.env.NODE_ENV);
 
 const config = {
@@ -17,7 +18,9 @@ const config = {
     // 加载器
     loaders: [
       // CSS
-      {test: /\.css$/, loader: 'style-loader!css-loader!less-loader'},
+      {test: /\.css$/, loader: 'style-loader!css-loader!less-loader'/*, options: {
+        postcss:[autoprefixer({browsers:['last 2 versions']})]
+      }*/},
       // JS
       {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader!eslint-loader'},
       // HTML
