@@ -17,6 +17,10 @@
     <option value="">区</option>
   </select>
 </div>
+<div>
+  <p>已选择</p>
+  <p class="display-position"></p>
+</div>
 <script type="text/javascript">
   var select = {
     province: ['江西','广东'],
@@ -28,15 +32,8 @@
     city: document.getElementsByClassName('city')[0],
     block: document.getElementsByClassName('block')[0]
   }
+  var displayPosition = document.getElementsByClassName('display-position')[0]
   function createSelect (select,options) {
-    // TODO appendChild
-    // for (x in dom) {
-    //   var current = dom[x].children
-    //   var len = current.length
-    //   for (var y = 1; y <= len; y++) {
-    //     dom[x].removeChild(current[y])
-    //   }
-    // }
     for (var x = 0; x < options.length; x++) {
       var option = document.createElement('option')
       option.innerHTML = options[x]
@@ -62,7 +59,10 @@
     var node1 = dom.province.value
     var node2 = dom.city.value
     var node3 = dom.block.value
-    console.log([node1,node2,node3])
+    var node1Name = select.province[node1]
+    var node2Name = select.city[node1][node2]
+    var node3Name = select.block[node1][node2][node3]
+    displayPosition.innerHTML = [node1Name,node2Name,node3Name].join('-')
     return [node1,node2,node3]
   }
   renderProvince()
