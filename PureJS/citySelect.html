@@ -8,13 +8,13 @@
 <body>
 <div class="colleges">
   <select class="province" onchange="renderCity(this.value)">
-    <option value=''>省份</option>
+    <option value="">省份</option>
   </select>
   <select class="city" onchange="renderBlock()">
-    <option value=''>城市</option>
+    <option value="">城市</option>
   </select>
   <select class="block" onchange="renderAll()">
-    <option value=''>区</option>
+    <option value="">区</option>
   </select>
 </div>
 <script type="text/javascript">
@@ -48,9 +48,12 @@
     createSelect(dom.province,select.province)
   }
   function renderCity (node) {
+    dom.city.innerHTML = '<option value="">城市</option>'
+    dom.block.innerHTML = '<option value="">区</option>'
     createSelect(dom.city,select.city[node])
   }
   function renderBlock () {
+    dom.block.innerHTML = '<option value="">区</option>'
     var node1 = dom.province.value
     var node2 = dom.city.value
     createSelect(dom.block,select.block[node1][node2])
