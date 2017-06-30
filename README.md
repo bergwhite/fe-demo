@@ -25,6 +25,7 @@
 * [响应式布局以及图片懒加载（responseLayout）](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
 * [等高布局（sameHeightLayout）](https://bergwhite.github.io/quick-start/PureCSS/sameHeightLayout)
 * [flexLayout（弹性布局）](https://bergwhite.github.io/quick-start/PureCSS/flexLayout)
+* [timeAxis（时间轴）](https://bergwhite.github.io/quick-start/PureCSS/timeAxis)
 
 > JS组件（PureJS）
 
