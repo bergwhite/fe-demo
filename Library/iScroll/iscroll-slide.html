@@ -1,0 +1,132 @@
+<!-- Thanks: http://www.zhangyunling.com/study/2015/20150207/version_1/iscroll-test.html -->
+<!-- 
+author: bergwhite
+date  : 2017/07/25
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>iScroll下拉刷新 / 上拉加载</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <style type="text/css">
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+    ul,li {
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      list-style-type: none;
+    }
+    .slide {
+      width: 100%;
+      height: 100px;
+      position: absolute;
+      transition: all 1s;
+    }
+    .slide-down-tip, .slide-up-tip {
+      position: absolute;
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      left: 0;
+    }
+    .slide-down-tip {
+      top: -40px;
+    }
+    .slide-up-tip {
+      bottom: -40px;
+    } 
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div>
+      <p class="slide-down-tip">
+        <span class="slide-down-tip-dir">↓ </span>
+        <span class="slide-down-tip-ctx">下拉刷新</span>
+      </p>
+      <div class="slide-down-main">
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
+        </ul>
+      </div>
+      <p class="slide-up-tip">
+        <span class="slide-up-tip-dir">↑ </span>
+        <span class="slide-up-tip-ctx">上拉加载</span>
+      </p>
+    </div>
+  </div>
+<script type="text/javascript" src="iscroll.js"></script>
+<script type="text/javascript">
+  const slideDownTipDir = document.getElementsByClassName('slide-down-tip-dir')[0]
+  const slideDownTipCtx = document.getElementsByClassName('slide-down-tip-ctx')[0]
+  const slideUpTipDir = document.getElementsByClassName('slide-up-tip-dir')[0]
+  const slideUpTipCtx = document.getElementsByClassName('slide-up-tip-ctx')[0]
+
+  // 文档加载完成了再新建实例
+  document.body.onload = function() {
+    var myScroll = new IScroll('.slide', {
+      probeType: 3,
+      mouseWheel: true,
+    });
+
+    // 监听屏幕滚动
+    myScroll.on("scroll",function(e){
+
+      // 调试代码
+      console.log(`this.y / ${this.y}`)
+      console.log(`this.maxScrollY - this.y / ${this.maxScrollY - this.y}`)
+
+      // 下拉事件 / 在大于40的位置放手则开始刷新
+      if (this.y >= 40) {
+        slideDownTipDir.innerText = '↑ '
+        slideDownTipCtx.innerText = '开始刷新'
+      }
+
+      // 下拉事件 / 在0-40之间的位置放手则提示下拉才能刷新
+      else if (this.y > 0 && this.y < 40) {
+        slideDownTipDir.innerText = '↓ '
+        slideDownTipCtx.innerText = '下拉刷新'
+      }
+
+      // 上拉事件 / 
+      if( this.maxScrollY - this.y >= 40){
+        slideUpTipDir.innerText = '↓ '
+        slideUpTipCtx.innerText = '开始加载'
+      }
+
+      // 上拉事件
+      else if( this.maxScrollY - this.y < 40 &&  this.maxScrollY - this.y >=0){
+        slideUpTipDir.innerText = '↑ '
+        slideUpTipCtx.innerText = '上拉加载'
+      }
+    });
+    
+    // 监听下拉事件
+    myScroll.on("slideDown",function(){
+      if (this.y > 40) {
+        alert('开始上拉刷新')
+      }
+    });
+    
+    // 监听上拉事件
+    myScroll.on("slideUp",function(){
+      if(this.maxScrollY - this.y > 40){
+        alert('开始下拉加载')
+      }
+    });
+  }
+</script>
+</body>
+</html>

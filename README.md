@@ -18,6 +18,7 @@
 > 库（Library）
 
 * [图表库（ChartJS）](https://bergwhite.github.io/quick-start/Library/ChartJS/)
+* [滚动库（iScroll）](https://bergwhite.github.io/quick-start/Library/iScroll/iscroll-slide)
 
 > CSS组件（PureCSS）
 
