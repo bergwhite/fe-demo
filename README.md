@@ -11,33 +11,33 @@
 
 > 管理（Manage）
 
-* [用Gulp配置立即预览的前端开发环境（GulpJS）](https://github.com/bergwhite/quick-start/tree/master/Manage/GulpJS)
-* [支持热更新的Webpack开发环境（WebpackJS）](https://github.com/bergwhite/quick-start/tree/master/Manage/WebpackJS)
-* [AMD模块化实现（RequireJS）](https://bergwhite.github.io/quick-start/Manage/RequireJS/)
+* [用Gulp配置立即预览的前端开发环境（GulpJS）](https://github.com/bergwhite/demo/tree/master/Manage/GulpJS)
+* [支持热更新的Webpack开发环境（WebpackJS）](https://github.com/bergwhite/demo/tree/master/Manage/WebpackJS)
+* [AMD模块化实现（RequireJS）](https://bergwhite.github.io/demo/Manage/RequireJS/)
 
 > 库（Library）
 
-* [图表库（ChartJS）](https://bergwhite.github.io/quick-start/Library/ChartJS/)
-* [滚动库（iScroll）](https://bergwhite.github.io/quick-start/Library/iScroll/iscroll-slide)
+* [图表库（ChartJS）](https://bergwhite.github.io/demo/Library/ChartJS/)
+* [滚动库（iScroll）](https://bergwhite.github.io/demo/Library/iScroll/iscroll-slide)
 
 > CSS组件（PureCSS）
 
-* [transform2D（用动画演示transform是干嘛的）](https://bergwhite.github.io/quick-start/PureCSS/transform2D)
-* [响应式布局以及图片懒加载（responseLayout）](https://bergwhite.github.io/quick-start/PureCSS/responseLayout)
-* [等高布局（sameHeightLayout）](https://bergwhite.github.io/quick-start/PureCSS/sameHeightLayout)
-* [flexLayout（弹性布局）](https://bergwhite.github.io/quick-start/PureCSS/flexLayout)
-* [timeAxis（时间轴）](https://bergwhite.github.io/quick-start/PureCSS/timeAxis)
+* [transform2D（用动画演示transform是干嘛的）](https://bergwhite.github.io/demo/PureCSS/transform2D)
+* [响应式布局以及图片懒加载（responseLayout）](https://bergwhite.github.io/demo/PureCSS/responseLayout)
+* [等高布局（sameHeightLayout）](https://bergwhite.github.io/demo/PureCSS/sameHeightLayout)
+* [flexLayout（弹性布局）](https://bergwhite.github.io/demo/PureCSS/flexLayout)
+* [timeAxis（时间轴）](https://bergwhite.github.io/demo/PureCSS/timeAxis)
 
 > JS组件（PureJS）
 
-* [简单音乐播放器（simpleMusicPlayer）](https://bergwhite.github.io/quick-start/PureJS/simpleMusicPlayer)
-* [开关按钮（switch）](https://bergwhite.github.io/quick-start/PureJS/switch)
-* [获取表单的值（getInputValue）](https://bergwhite.github.io/quick-start/PureJS/getInputValue)
-* [指定位置插值（insertToCurrentFoucs）](https://bergwhite.github.io/quick-start/PureJS/insertToCurrentFoucs)
-* [三级联动（citySelect）](https://bergwhite.github.io/quick-start/PureJS/citySelect)
-* [模拟输入框（contenteditable）](https://bergwhite.github.io/quick-start/PureJS/contenteditable)
-* [事件代理（eventDelegation）](https://bergwhite.github.io/quick-start/PureJS/eventDelegation)
-* [轮播图（autoDisplay）](https://bergwhite.github.io/quick-start/PureJS/autoDisplay)
-* [模拟弹窗（simulateAlert）](https://bergwhite.github.io/quick-start/PureJS/simulateAlert)
-* [本地存储（localStorage）](https://bergwhite.github.io/quick-start/PureJS/localStorage)
-* [三种异步请求（AJAX/Promise/Fetch）（async）](https://bergwhite.github.io/quick-start/PureJS/async)
+* [简单音乐播放器（simpleMusicPlayer）](https://bergwhite.github.io/demo/PureJS/simpleMusicPlayer)
+* [开关按钮（switch）](https://bergwhite.github.io/demo/PureJS/switch)
+* [获取表单的值（getInputValue）](https://bergwhite.github.io/demo/PureJS/getInputValue)
+* [指定位置插值（insertToCurrentFoucs）](https://bergwhite.github.io/demo/PureJS/insertToCurrentFoucs)
+* [三级联动（citySelect）](https://bergwhite.github.io/demo/PureJS/citySelect)
+* [模拟输入框（contenteditable）](https://bergwhite.github.io/demo/PureJS/contenteditable)
+* [事件代理（eventDelegation）](https://bergwhite.github.io/demo/PureJS/eventDelegation)
+* [轮播图（autoDisplay）](https://bergwhite.github.io/demo/PureJS/autoDisplay)
+* [模拟弹窗（simulateAlert）](https://bergwhite.github.io/demo/PureJS/simulateAlert)
+* [本地存储（localStorage）](https://bergwhite.github.io/demo/PureJS/localStorage)
+* [三种异步请求（AJAX/Promise/Fetch）（async）](https://bergwhite.github.io/demo/PureJS/async)
