@@ -1,0 +1,16 @@
+[2017-08-14 11:29:59.150] [ERROR] cheese - Cheese is too ripe!
+[2017-08-14 11:29:59.156] [FATAL] cheese - Cheese was breeding ground for listeria.
+[2017-08-14 11:31:16.951] [ERROR] cheese - Cheese is too ripe!
+[2017-08-14 11:31:16.955] [FATAL] cheese - Cheese was breeding ground for listeria.
+[2017-08-14 11:32:23.195] [ERROR] cheese - Cheese is too ripe!
+[2017-08-14 11:32:23.198] [FATAL] cheese - Cheese was breeding ground for listeria.
+[2017-08-14 11:34:23.879] [TRACE] cheese - Entering cheese testing
+[2017-08-14 11:34:23.883] [DEBUG] cheese - Got cheese.
+[2017-08-14 11:34:23.883] [INFO] cheese - Cheese is Gouda.
+[2017-08-14 11:34:23.884] [WARN] cheese - Cheese is quite smelly.
+[2017-08-14 11:34:23.884] [ERROR] cheese - Cheese is too ripe!
+[2017-08-14 11:34:23.884] [FATAL] cheese - Cheese was breeding ground for listeria.
+[2017-08-14 11:34:25.255] [TRACE] cheese - GET / ::1
+[2017-08-14 11:34:37.626] [TRACE] cheese - GET / ::1
+[2017-08-14 11:34:41.799] [TRACE] cheese - GET /svae ::1
+[2017-08-14 11:34:51.109] [TRACE] cheese - GET /anywknew ::1
