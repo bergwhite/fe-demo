@@ -11,6 +11,7 @@
   "dependencies": {
     "express": "^4.15.4",
     "express-session": "^1.15.5",
+    "jsonwebtoken": "^7.4.3",
     "log4js": "^2.3.3",
     "mongoose": "^4.11.6",
     "morgan": "^1.8.2",

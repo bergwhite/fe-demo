@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script src="http://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
+</head>
+<body>
+  <script>
+    axios.get('/api/login').then((res) => {
+      console.log(res.data.token)
+      // token不存在则生成
+      if (localStorage.getItem('access_token') === null) {
+        localStorage.setItem('access_token', res.data.token)
+      }
+    })
+  </script>
+</body>
+</html>
