@@ -26,8 +26,9 @@
 * [transform2D（用动画演示transform是干嘛的）](https://bergwhite.github.io/demo/PureCSS/transform2D)
 * [响应式布局以及图片懒加载（responseLayout）](https://bergwhite.github.io/demo/PureCSS/responseLayout)
 * [等高布局（sameHeightLayout）](https://bergwhite.github.io/demo/PureCSS/sameHeightLayout)
-* [flexLayout（弹性布局）](https://bergwhite.github.io/demo/PureCSS/flexLayout)
-* [timeAxis（时间轴）](https://bergwhite.github.io/demo/PureCSS/timeAxis)
+* [弹性布局（flexLayout）](https://bergwhite.github.io/demo/PureCSS/flexLayout)
+* [时间轴（timeAxis）](https://bergwhite.github.io/demo/PureCSS/timeAxis)
+* [下划线可变长导航（navWithHoverLine）](https://bergwhite.github.io/demo/PureCSS/navWithHoverLine)
 
 > JS组件（PureJS）
 

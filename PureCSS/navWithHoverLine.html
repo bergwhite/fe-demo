@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>下划线可变长导航</title>
+  <style>
+
+    /* 清除默认样式 */
+
+    ul, li {
+      padding: 0;
+      margin: 0;
+    }
+
+    /* 清除浮动 */
+
+    .nav {
+      overflow: hidden;
+    }
+
+    /* 设置链接 */
+
+    .nav a {
+      display: block;
+      position: relative;
+      padding: 3px;
+      font-size: 30px;
+    }
+
+    /* 设置列表 */
+
+    .nav li {
+      display: block;
+      float: left;
+      margin-right: 5px;
+    }
+
+    /* 下划线默认宽度为0 */
+
+    .nav a::before {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      transition: all 1s;
+    }
+
+    /* 悬浮之后显示下划线 */
+
+    .nav li:hover > a::before {
+      background-color: red;
+      width: 100%;
+      left: 0;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>请将鼠标悬浮在导航栏进行测试</h1>
+  <ul class="nav">
+    <li><a>首页</a></li>
+    <li><a>随笔</a></li>
+    <li><a>影集</a></li>
+    <li><a>留言</a></li>
+  </ul>
+</body>
+</html>
