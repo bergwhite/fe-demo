@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>画布转base64及blob示例</title>
+</head>
+<body>
+  <h1>画布转base64及blob示例</h1>
+  <div>
+    <canvas id="canvas" width="300" height="300"></canvas>
+  </div>
+  <script>
+
+    function createImgLink(type, src) {
+      var a = document.createElement('a')
+      a.innerText = type
+      a.href = src
+      a.target = '_blank'
+      document.body.appendChild(a)
+    }
+
+    // 获取画布元素
+    var canvas = document.getElementById('canvas')
+
+    // 获取画布内容
+    var ctx = canvas.getContext('2d')
+
+    // 填充样式
+    ctx.fillStyle = '#03a9f4'
+
+    // 画正方形
+    ctx.fillRect(10, 10, 100, 100)
+
+    // 画布转图片
+    // 第一个参数是保存图片类型，默认为image/png
+    // 第二个参数是图片的质量，0.1 - 1，默认0.92
+    var canvasURL = canvas.toDataURL('image/jpeg', 1);
+
+    // 显示图片地址
+    createImgLink('base64-img-url(please-open-with-right-click)', canvasURL)
+
+    // 转Blob
+    canvas.toBlob((blob) => {
+      // 获取blob格式的url
+      var url = URL.createObjectURL(blob);
+      // 显示图片地址
+      createImgLink('blob-img-url', url)
+      // 销毁url方法
+      // URL.revokeObjectURL(url)
+    }, 'image/jpeg', 1)
+
+    // 显示ctx对象
+    console.log(ctx)
+  </script>
+</body>
+</html>
