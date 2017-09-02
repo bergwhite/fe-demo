@@ -44,3 +44,4 @@
 * [本地存储（localStorage）](https://bergwhite.github.io/demo/PureJS/localStorage)
 * [三种异步请求（AJAX/Promise/Fetch）（async）](https://bergwhite.github.io/demo/PureJS/async)
 * [画布转base64及blob示例（canvasToBase64AndBlob）](https://bergwhite.github.io/demo/PureJS/canvasToBase64AndBlob)
+* [文件上传（fileUpload）](https://bergwhite.github.io/demo/PureJS/fileUpload)
