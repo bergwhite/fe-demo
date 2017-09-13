@@ -46,6 +46,7 @@
 * [三种异步请求（AJAX/Promise/Fetch）（async）](https://bergwhite.github.io/fe-demo/PureJS/async)
 * [画布转base64及blob示例（canvasToBase64AndBlob）](https://bergwhite.github.io/fe-demo/PureJS/canvasToBase64AndBlob)
 * [文件上传（fileUpload）](https://bergwhite.github.io/fe-demo/PureJS/fileUpload)
+* [canvas五子棋（canvasFiveGame）](https://bergwhite.github.io/fe-demo/PureJS/canvasFiveGame)
 
 > 页面
 

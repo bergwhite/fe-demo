@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style type="text/css">
+    body {
+      background-color: gray;
+      margin: 10px 0;
+    }
+    .games-five-wrap {
+      text-align: center;
+    }
+    .games-five {
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="games-five-wrap">
+    <canvas class="games-five" width="540px" height="540px"></canvas>
+  </div>
+  <script type="text/javascript">
+    // TODO: 历史落子 / 悔棋 / 当前棋子的标记 / 历史棋盘 / 耗时统计 / 支持和反对 / 评论 / 保存账号和历史对局
+    // 获取画布元素
+    var gamesFive = document.getElementsByClassName('games-five')[0]
+    // 获取画布内容
+    var gamesFiveCtx = gamesFive.getContext('2d')
+    // 默认设置
+    var five = {}
+    // 初始化配置
+    five.init = {
+      // 用矩阵存储当前棋盘
+      // 初始值为0
+      // 用1表示黑棋
+      // 用2表示白棋
+      matrix: [
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      ],
+      // 默认棋盘
+      // 用于对棋局结束后进行初始化
+      matrixDefault: [
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      ],
+      // 当前用户移动到的位置
+      currentPosition: null,
+      // 历史棋盘的存储
+      history: [
+        // {color: 'red', position: []}
+      ],
+      // 渲染函数
+      render: {
+        // 渲染背景
+        bg: function () {
+          // 开始绘制背景
+          five.method.setBack(gamesFiveCtx)
+        },
+        // 渲染线条
+        line: function () {
+          // 开始绘制水平线
+          five.method.setLine('row')
+          // 开始绘制垂直线
+          five.method.setLine('col')
+        }
+      },
+      // 初始化函数
+      factory: function () {
+        gamesFiveCtx.putImageData(five.conf.defaultCanvas, 0, 0);
+        five.init.matrix = five.init.matrixDefault.slice(0)
+        five.init.history = []
+      }
+    }
+    five.conf = {
+      lineColor: '#FFF',  // 线条颜色
+      lineCount: 15,  // 线条数量
+      backColor: '#F2AF60',  // 背景颜色
+      backWidth: 540,  // 背景宽度
+      backHeight: 540,  // 背景高度
+      paddTop: 20,  // 顶部距离
+      paddLeft: 20,  // 左边距离
+      latestCanvas: null,
+      defaultCanvas: null,
+      currentColor: 'black'
+    }
+    five.method = {
+      // 获取格子的宽度
+      getGridWidth: function () {
+        var val = (five.conf.backWidth - five.conf.paddTop * 2) / (five.conf.lineCount - 1)
+        var valToFixed2 = val.toFixed(2)
+        var valToNum = parseFloat(valToFixed2)
+        return valToNum
+      },
+      // 绘制背景
+      setBack: function (canvas) {
+        canvas.fillStyle = five.conf.backColor
+        canvas.fillRect(0, 0, five.conf.backWidth, five.conf.backHeight)
+      },
+      // 绘制水平线
+      setLine: function (type) {
+        var rowCount = five.conf.lineCount
+        var rowWidth = five.conf.backWidth
+        var rowPerWidth = five.method.getGridWidth()
+        var fromTop = five.conf.paddTop
+        var fromLeft = five.conf. paddLeft
+        for(var i = 0; i < rowCount; i++){
+          gamesFiveCtx.beginPath()
+          if (type==='row') {
+            gamesFiveCtx.moveTo(fromLeft, fromTop + rowPerWidth * i)
+            gamesFiveCtx.lineTo(rowWidth - fromLeft, fromTop + rowPerWidth * i)
+          }
+          else if (type==='col') {
+            gamesFiveCtx.moveTo(fromTop + rowPerWidth * i, fromLeft)
+            gamesFiveCtx.lineTo(fromTop + rowPerWidth * i, rowWidth - fromLeft)
+          }
+          gamesFiveCtx.stroke()
+        }
+      },
+      // 当前预下棋位置
+      getPositionFun: function (e) {
+        // console.log('e.pageX / ' + (e.pageX - gamesFive.offsetLeft + 1))
+        // console.log('e.pageY / ' + (e.pageY - gamesFive.offsetTop + 1))
+        var width = five.method.getGridWidth()
+        var x = Math.ceil((e.pageX - gamesFive.offsetLeft + 1) / (width)) - 1
+        var y = Math.ceil((e.pageY - gamesFive.offsetTop + 1) / (width)) - 1
+        // console.log('e.pageX / ' + x)
+        // console.log('e.pageY / ' + y)
+        var pos = five.method.getPositionByXY(x,y)
+        var posX = pos.offX
+        var posY = pos.offY
+        // console.log(pos)
+        if (five.conf.latestCanvas === null) {
+          five.conf.latestCanvas = gamesFiveCtx.getImageData(0, 0, five.conf.backWidth, five.conf.backHeight)
+        }
+        else {
+          gamesFiveCtx.putImageData(five.conf.latestCanvas, 0, 0);
+        }
+        if (x !== five.conf.lineCount && five.init.matrix[x][y] === 0) {
+          five.method.setDown(five.conf.currentColor, posX, posY, width)
+        }
+      },
+      getPosition: function () {
+        gamesFive.addEventListener('mousemove', five.method.getPositionFun, false)
+      },
+      // 根据位置，获取棋子的坐标
+      getPositionByXY: function (x, y) {
+        var width = five.method.getGridWidth()
+        var top = five.conf.paddTop
+        var left = five.conf.paddLeft
+        var offX = left + x * width
+        var offY = top + y * width
+        return {
+          offX: offX,
+          offY: offY
+        }
+      },
+      setDownHandleFun: function (e) {
+        console.log(e)
+        var width = five.method.getGridWidth()
+        var x, y
+        if (e.offsetX < five.conf.paddLeft) {
+          x = 0
+        }
+        else {
+          console.log('e.offsetX / ' + e.offsetX)
+          console.log('gamesFive.offsetLeft / ' + gamesFive.offsetLeft)
+          x = Math.ceil(e.offsetX / (width)) - 1
+        }
+        if (e.offsetY < five.conf.paddTop) {
+          y = 0
+        }
+        else {
+          y = Math.ceil(e.offsetY / (width)) - 1
+        }
+        colorIndex = five.conf.currentColor === 'black' ? 1 : 2
+        console.log()
+        console.log(y)
+        console.log('e.pageX / ' + x)
+        console.log('e.pageY / ' + y)
+        var pos = five.method.getPositionByXY(x,y)
+        var posX = pos.offX
+        var posY = pos.offY
+        console.log(pos)
+        five.conf.latestCanvas = gamesFiveCtx.getImageData(0, 0, five.conf.backWidth, five.conf.backHeight)
+        if (x !== five.conf.lineCount && five.init.matrix[x][y] === 0) {
+          five.method.setDown(five.conf.currentColor, posX, posY, width)
+          five.init.matrix[x][y] = colorIndex
+          five.init.history.push({
+            color: five.conf.currentColor,
+            position: [x,y]
+          })
+          five.conf.currentColor = five.conf.currentColor === 'black' ? 'white' : 'black'
+          five.method.isWin(colorIndex, 'x', x, y)
+          console.log('colorIndex / ' + colorIndex)
+        }
+        else {
+          console.log('............')
+        }
+        console.log(five.init.history)
+        console.log(five.init.matrix)
+      },
+      setDownHandle: function () {
+        gamesFive.addEventListener('click', five.method.setDownHandleFun, false)
+      },
+      // 下棋函数
+      setDown: function (color, x, y, width) {
+        gamesFiveCtx.beginPath()
+        if (color==='white') {
+          gamesFiveCtx.fillStyle = 'white'
+        }
+        else if (color==='black') {
+          gamesFiveCtx.fillStyle = 'black'
+        }
+        gamesFiveCtx.arc(x, y, width / 2 - 4, 0, 2 * Math.PI)
+        gamesFiveCtx.fill()
+      },
+      // 赢棋判断函数
+      // 通过传入当前棋子的类型，以及所在棋盘的位置
+      // 判断两条直线和两条斜线方向是否构成五子连珠
+      // 构成连珠则弹窗提示当前棋子已赢球
+      isWin: function (who, type, fromX, fromY) {
+        // 默认赢球状态为否
+        var winState = false
+        // 获取当前棋子的颜色
+        var currentColor = who === 1 ? 'black' : 'white'
+        // 存储不同方向的连珠计数变量
+        var totalAllX = 1, totalAllY = 1,totalAllXX = 1, totalAllXY = 1
+        // 检查是否满足五子连珠的配置信息
+        var checkConf = {
+          // 检查X轴
+          x: {
+            // 检查当前点的左边部分（←）
+            left: {
+              // 左半边最多可以走的步数
+              min: fromX,
+              // 下一个点的x轴的相对坐标
+              x: -1,
+              // 下一个点的y轴的相对坐标
+              y: 0
+            },
+            // 检查当前点的右边部分（→）
+            right: {
+              // 右半边最多可以走的步数
+              min: five.conf.lineCount - fromX - 1,
+              x: 1,
+              y: 0
+            },
+            // 当前棋子连珠数统计
+            total: 1,
+            // 当前连珠方向信息
+            info: 'X轴 / '
+          },
+          // 检查Y轴（↓）
+          y: {
+            // 检查当前点的上面部分（↑）
+            left: {
+              min: fromY,
+              x: 0,
+              y: -1
+            },
+            // 检查当前点的下面部分（↓）
+            right: {
+              min: five.conf.lineCount - fromY - 1,
+              x: 0,
+              y: 1
+            },
+            total: 1,
+            info: 'X轴 / '
+          },
+          // 检查左下到右上斜轴
+          leftBottom: {
+            // 检查当前点的左下部分（↙）
+            left: {
+              min: Math.min(fromX, five.conf.lineCount - fromY -1),
+              x: -1,
+              y: 1
+            },
+            // 检查当前点的右上部分（↗）
+            right: {
+              min: Math.min(five.conf.lineCount - fromX -1, fromY),
+              x: 1,
+              y: -1
+            },
+            total: 1,
+            info: 'X轴 / '
+          },
+          // 检查左上右下斜轴
+          rightBottom: {
+            // 检查当前点的左上部分（↖）
+            left: {
+              min: Math.min(fromX, fromY),
+              x: -1,
+              y: -1
+            },
+            // 检查当前点的右下部分（↘）
+            right: {
+              min: Math.min(five.conf.lineCount - fromX - 1, five.conf.lineCount - fromY - 1),
+              x: 1,
+              y: 1
+            },
+            total: 1,
+            info: 'X轴 / '
+          }
+        }
+        var checkFun = function (type, who) {
+          if (typeof checkConf[type] === 'undefined') {
+            console.log(checkConf[type] + ' is undefined.')
+            return -1
+          }
+          var current = checkConf[type]
+          checkConf[type].total = 1
+          // 左边的检查函数
+          for (var i = 0; i < current.left.min; i++) {
+            if (checkConf[type].total === 5) {
+              break;
+            }
+            else if (five.init.matrix[fromX + (i + 1) * current.left.x][fromY + (i + 1) * current.left.y] !== who) {
+              break;
+            }
+            else {
+              checkConf[type].total++
+            }
+          }
+          // 右边的检查函数
+          for (var i = 0; i < current.right.min; i++) {
+            if (checkConf[type].total === 5) {
+              break;
+            }
+            else if (five.init.matrix[fromX + (i + 1) * current.right.x][fromY + (i + 1) * current.right.y] !== who) {
+              break;
+            }
+            else {
+              checkConf[type].total++
+            }
+          }
+          if (checkConf[type].total === 5) {
+            winState = true
+          }
+          console.log('checkConf[' + type + '].total / ' + checkConf[type].total)
+        }
+        // TODO: BUG，边界处理的bug
+        // checkFun('x', who)
+        // checkFun('y', who)
+        // checkFun('leftBottom', who)
+        // checkFun('rightBottom', who)
+        // 直线方向的检测函数
+        var checkStaright = function () {
+          // 检查X
+          for (var i = fromX - 1; i >= 0; i--) {
+            if (totalAllX === 5) {
+              break;
+            }
+            else if (five.init.matrix[i][fromY] !== who) {
+              break;
+            }
+            else {
+              totalAllX++
+            }
+          }
+          for (var i = fromX + 1; i < five.conf.lineCount; i++) {
+            if (totalAllX === 5) {
+              break;
+            }
+            else if (five.init.matrix[i][fromY] !== who) {
+              break;
+            }
+            else {
+              totalAllX++
+            }
+          }
+          if (totalAllX === 5) {
+            winState = true
+          }
+          console.log('totalAllX / ' + totalAllX)
+          // 检查Y
+          for (var i = fromY - 1; i >= 0; i--) {
+            if (totalAllY === 5) {
+              break;
+            }
+            else if (five.init.matrix[fromX][i] !== who) {
+              break;
+            }
+            else {
+              totalAllY++
+            }
+          }
+          for (var i = fromY + 1; i < five.conf.lineCount; i++) {
+            if (totalAllY === 5) {
+              break;
+            }
+            else if (five.init.matrix[fromX][i] !== who) {
+              break;
+            }
+            else {
+              totalAllY++
+            }
+          }
+          if (totalAllY === 5) {
+            winState = true
+          }
+          console.log('totalAllY / ' + totalAllY)
+        }
+        // 斜线方向的检测函数
+        checkItalic = function () {
+          // 左下角斜 xx
+          // 左边
+          var w = 1, r = 1, min
+          // 所下为最左下角的子，则停止向左搜索
+          if(fromX !== 0 && fromY !== five.conf.lineCount - 1) {
+            min = Math.min(fromX, five.conf.lineCount - fromY -1)
+            console.log('leftMin / ' + min)
+            for (var i = 0; i < min; i++) {
+              if (totalAllXX === 5) {
+                // 初始化W
+                w = 1
+                break;
+              }
+              else if (five.init.matrix[fromX - w][fromY + w] !== who) {
+                // 初始化W
+                w = 1
+                break;
+              }
+              else {
+                w++
+                totalAllXX++
+              }
+            }
+          }
+          // 右边
+          // 所下为最右上角的子，则停止向右搜索
+          if(fromX !== five.conf.lineCount - 1 && fromY !== 0) {
+            min = Math.min(five.conf.lineCount - fromX -1, fromY)
+            console.log('rightMin / ' + min)
+            for (var i = 0; i < min; i++) {
+              if (totalAllXX === 5) {
+                // 初始化R
+                r = 1
+                break;
+              }
+              else if (five.init.matrix[fromX + r][fromY - r] !== who) {
+                // 初始化R
+                r = 1
+                break;
+              }
+              else {
+                r++
+                totalAllXX++
+              }
+            }
+          }
+          if (totalAllXX === 5) {
+            winState = true
+          }
+          console.log('totalAllXX / ' + totalAllXX)
+          // 右下角斜 xy
+          // 左边
+          var z = 1, h = 1
+          // 所下为最左上角的子，则停止向左搜索
+          if(fromX !== 0 && fromY !== 0) {
+            min = Math.min(fromX, fromY)
+            for (var i = 0; i < min; i++) {
+              if (totalAllXY === 5) {
+                // 初始化Z
+                z = 1
+                break;
+              }
+              else if (five.init.matrix[fromX - z][fromY - z] !== who) {
+                // 初始化Z
+                z = 1
+                break;
+              }
+              else {
+                z++
+                totalAllXY++
+              }
+            }
+          }
+          // 右边
+          // 所下为最右下角的子，则停止向右搜索
+          if(fromX !== five.conf.lineCount - 1 && fromY !== five.conf.lineCount - 1) {
+            min = Math.min(five.conf.lineCount - fromX - 1, five.conf.lineCount - fromY - 1)
+            for (var i = 0; i < min; i++) {
+              // 连珠为5则棋局结束
+              if (totalAllXY === 5) {
+                // 初始化H
+                h = 1
+                break;
+              }
+              // 如果右边的子，不是当前棋者的子，则停止搜索
+              else if (five.init.matrix[fromX + h][fromY + h] !== who) {
+                // 初始化H
+                h = 1
+                break;
+              }
+              // 否则，总数加1
+              else {
+                h++
+                totalAllXY++
+              }
+            }
+          }
+          // 如果五子连珠
+          if (totalAllXY === 5) {
+            // 标记状态为赢棋
+            winState = true
+          }
+          // 显示当前的连珠状态
+          console.log('totalAllXY / ' + totalAllXY)
+        }
+        // 检查直线连珠
+        checkStaright()
+        // 检查斜线连珠
+        checkItalic()
+        // 赢了则弹窗提示
+        if (winState) {
+          var winStateConfirm = confirm(currentColor + ' 赢。 再来一局？')
+          // 提示完后，标记赢棋状态为否
+          winState = false
+          if (winStateConfirm) {
+            // five.init.factory()
+            document.location.href = document.location.href
+          }
+          else {
+            gamesFive.removeEventListener('click', five.method.setDownHandleFun, false)
+            gamesFive.removeEventListener('mousemove', five.method.getPositionFun, false)
+          }
+        }
+      }
+    }
+    console.log('five.method.getGridWidth() / ' + five.method.getGridWidth())
+    // 初始化背景
+    five.init.render.bg()
+    // 初始化线条
+    five.init.render.line()
+    five.conf.defaultCanvas = gamesFiveCtx.getImageData(0, 0, five.conf.backWidth, five.conf.backHeight)
+    five.method.getPosition()
+    five.method.setDownHandle()
+    // five.method.setDown('black', 6, 6)
+    console.log('gamesFive.offsetLeft / ' + gamesFive.offsetLeft)
+    console.log('gamesFive.offsetTop / ' + gamesFive.offsetTop)
+  </script>
+</body>
+</html>
