@@ -1,0 +1,24 @@
+@font-face {
+	font-family: cn;
+	src:url(cn.ttf);
+}
+@font-face {
+	font-family: en;
+	src:url(en.ttf);
+}
+h1 {
+	text-align: center;
+	font-family: en;
+	font-size: 2em;
+	margin-top: 100px;
+}
+p {
+	-moz-column-count: 2;
+	-moz-column-gap:50px;
+	-moz-column-rule: solid;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-top: 50px;
+	font-family: cn;
+	font-size: 1.5em;
+}

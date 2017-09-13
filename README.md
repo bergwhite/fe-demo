@@ -46,3 +46,10 @@
 * [三种异步请求（AJAX/Promise/Fetch）（async）](https://bergwhite.github.io/demo/PureJS/async)
 * [画布转base64及blob示例（canvasToBase64AndBlob）](https://bergwhite.github.io/demo/PureJS/canvasToBase64AndBlob)
 * [文件上传（fileUpload）](https://bergwhite.github.io/demo/PureJS/fileUpload)
+
+> 页面
+
+* [column](https://bergwhite.github.io/demo/Page/fileUpload)
+* [login](https://bergwhite.github.io/demo/Page/login)
+* [resume](https://bergwhite.github.io/demo/Page/resume)
+* [writer](https://bergwhite.github.io/demo/Page/writer)

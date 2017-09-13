@@ -1,0 +1,86 @@
+@font-face {
+	font-family: en;
+	src:url(en.ttf);
+}
+body {
+	text-align: center;
+	font-size: 25px;
+	font-family: en;
+	background-image: url(bg.png);
+}
+::-moz-focus-inner {
+	border: 0;
+}
+a{
+	text-decoration: none;
+	color: rgb(123,118,135);
+}
+a:hover {
+	color:red;
+}
+/*---font---*/
+	.ft-large {
+		font-size: 30px;
+	}
+	.ft-middle {
+		font-size: 25px;
+	}
+	.ft-small {
+		font-size: 20px;
+	}
+/*---color---*/
+	.color-main {
+		color: red;
+	}
+	.tip {
+		color: rgb(123,118,135);
+	}
+	.submit {
+		color: white;
+	}
+/*---background---*/
+	.bg-main {
+		background-color: rgb(64,125,148);
+	}
+/*---layout---*/
+	.login_sms-panel {
+		display: none;
+	}
+	.main {
+	width: 400px;
+	height: 400px;
+	margin: auto;
+	margin-top: 150px;
+	}
+	.user,.pass {
+	width: 369px;
+	height: 50px;
+	margin-top: 20px;
+	border: 1px solid gray;
+	padding-left: 30px;
+	margin-bottom: 20px;
+	}
+	.submit {
+		border: 0;
+	}
+	.login,.login_sms,.submit {
+		height: 40px;
+	}
+	.login,.login_sms {
+		width: 200px;
+		float: left;
+	}
+	.tip {
+		float: left;
+	}
+	.forget {
+		float: right;
+	}
+	.submit {
+		width: 100%;
+		padding: 0;
+		margin: 20px 0;
+	}
+	.register {
+		float: right;
+	}
