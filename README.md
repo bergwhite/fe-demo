@@ -49,7 +49,7 @@
 
 > 页面
 
-* [column](https://bergwhite.github.io/fe-demo/Page/fileUpload)
-* [login](https://bergwhite.github.io/fe-demo/Page/login)
-* [resume](https://bergwhite.github.io/fe-demo/Page/resume)
-* [writer](https://bergwhite.github.io/fe-demo/Page/writer)
+* [column](https://bergwhite.github.io/fe-demo/page/fileUpload)
+* [login](https://bergwhite.github.io/fe-demo/page/login)
+* [resume](https://bergwhite.github.io/fe-demo/page/resume)
+* [writer](https://bergwhite.github.io/fe-demo/page/writer)
