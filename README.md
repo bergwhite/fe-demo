@@ -15,6 +15,7 @@
 * [支持热更新的Webpack开发环境（WebpackJS）](https://github.com/bergwhite/demo/tree/master/Manage/WebpackJS)
 * [AMD模块化实现（RequireJS）](https://bergwhite.github.io/demo/Manage/RequireJS/)
 * [NodeJS示例（NodeJS）](https://github.com/bergwhite/demo/tree/master/Manage/NodeJS)
+* [Vue示例](https://github.com/bergwhite/demo/tree/master/Manage/VueJS)
 
 > 库（Library）
 
